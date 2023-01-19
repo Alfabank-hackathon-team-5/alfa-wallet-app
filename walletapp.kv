@@ -14,14 +14,13 @@ ScreenManagement:
         spacing: 25
         orientation: 'vertical'
 
-        MDLabel:
-            id: welcome_label
-            text: "WELCOME"
-            font_size: 40
-            halign: 'center'
-            size_hint_y: None
-            height: self.texture_size[1]
-            padding_y: 15
+        MDSmartTile:
+            radius: 24
+            box_radius: [0, 0, 24, 24]
+            box_color: 1, 1, 1, .2
+            source: "login_page_image.jpg"
+            pos_hint: {"center_x": .5, "center_y": .5}
+            size_hint: None, None
 
         MDTextField:
             id: user
@@ -48,13 +47,7 @@ ScreenManagement:
             text: "LOG IN"
             font_size: 12
             pos_hint: {"center_x": 0.5}
-            on_press: app.logger()
-
-        MDRoundFlatButton:
-            text: "CLEAR"
-            font_size: 12
-            pos_hint: {"center_x": 0.5}
-            on_press: app.clear()
+            on_press: app.root.current = "user_page"
 
         Widget:
             size_hint_y: None

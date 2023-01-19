@@ -5,10 +5,10 @@ from kivymd.uix.boxlayout import MDBoxLayout
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang.builder import Builder
 
-class UserPage(Screen):
+class LoginPage(Screen):
     pass
 
-class LoginPage(Screen):
+class UserPage(Screen):
     pass
 
 class ScreenManagement(ScreenManager):
