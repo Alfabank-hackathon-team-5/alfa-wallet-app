@@ -64,23 +64,28 @@ ScreenManagement:
             icon: 'card-multiple-outline'
 
             ScrollView:
+
+                do_scroll_x: False
+                do_scroll_y: True
                 MDBoxLayout:
+                    adaptive_height: True
                     orientation: 'vertical'
+                    padding: [0, 15]
+                    spacing: 20
+                    
+                    MDTextField:
+                        id: user
+                        mode: "round"
+                        hint_text: "поиск..."
+                        icon_right: "magnify"
+                        size_hint_x: None
+                        width: 400
+                        font_size: 18
+                        pos_hint: {"center_x": 0.5}
                     ElementCard:
-                        image: 'library-2.jpg'
-                        text:"Digital Library"
-                        subtext:""
-                        items_count:"Gov Of India"
                     ElementCard:
-                        image : 'college.jpg'
-                        text: "Top Colleges"
-                        subtext:""
-                        items_count:"Worldwide"
                     ElementCard:
-                        image: 'settings.jpg'
-                        text:"Settings"
-                        subtext:""
-                        items_count:"4 Items"
+
 
         MDBottomNavigationItem:
             name: "screen 2"
@@ -95,14 +100,12 @@ ScreenManagement:
 
 <ElementCard@MDCard>:
     #md_bg_color:69/255,55/255,86/255,1
-    padding:dp(15)
-    spacing:dp(15)
-    radius:dp(25)
-    ripple_behavior: True
-    image:''
-    text:""
-    items_count:""
-    subtext:''
-    orientation:'vertical'
-    size_hint_y: None
+    size_hint: None, None
+    size: 288, 178
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    padding: 25
+    spacing: 25
+    orientation: 'vertical'
+    on_release: app.root.current = "login_page"
+
 
