@@ -55,24 +55,54 @@ ScreenManagement:
 
 <UserPage>:
     name: "user_page"
-    BoxLayout:
-        orientation: 'vertical'
 
-        MDBottomNavigation:
+    MDBottomNavigation:
 
-            MDBottomNavigationItem:
-                name: "screen 1"
-                text:
-                icon: 'card-multiple-outline'
+        MDBottomNavigationItem:
+            name: "screen 1"
+            text:
+            icon: 'card-multiple-outline'
 
-            MDBottomNavigationItem:
-                name: "screen 2"
-                text:
-                icon: 'plus-circle-outline'
+            ScrollView:
+                MDBoxLayout:
+                    orientation: 'vertical'
+                    ElementCard:
+                        image: 'library-2.jpg'
+                        text:"Digital Library"
+                        subtext:""
+                        items_count:"Gov Of India"
+                    ElementCard:
+                        image : 'college.jpg'
+                        text: "Top Colleges"
+                        subtext:""
+                        items_count:"Worldwide"
+                    ElementCard:
+                        image: 'settings.jpg'
+                        text:"Settings"
+                        subtext:""
+                        items_count:"4 Items"
 
-            MDBottomNavigationItem:
-                name: "screen 3"
-                text:
-                icon: 'account-settings-outline'
+        MDBottomNavigationItem:
+            name: "screen 2"
+            text:
+            icon: 'plus-circle-outline'
 
+        MDBottomNavigationItem:
+            name: "screen 3"
+            text:
+            icon: 'account-settings-outline'
+
+
+<ElementCard@MDCard>:
+    #md_bg_color:69/255,55/255,86/255,1
+    padding:dp(15)
+    spacing:dp(15)
+    radius:dp(25)
+    ripple_behavior: True
+    image:''
+    text:""
+    items_count:""
+    subtext:''
+    orientation:'vertical'
+    size_hint_y: None
 
