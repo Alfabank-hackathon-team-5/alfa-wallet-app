@@ -6,6 +6,8 @@ from kivy.lang.builder import Builder
 from kivymd.uix.card import MDCard
 from kivy.core.window import Window
 
+Window.size = (360, 800)
+
 class ElementCard(MDCard):
     def show_qr(self):
         app = MDApp.get_running_app()

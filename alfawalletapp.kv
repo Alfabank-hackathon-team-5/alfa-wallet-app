@@ -60,8 +60,8 @@ ScreenManagement:
 
                 MDRoundFlatButton:
                     text: "Войти"
-                    font_size: 12
-                    width: self.parent.width * 0.6
+                    font_size: 18
+                    # width: self.width * 0.4
                     pos_hint: {"center_x": 0.5}
                     text_color: "white"
                     md_bg_color: (239/256, 49/256, 36/256, 1.0)
@@ -224,10 +224,11 @@ ScreenManagement:
             text: "6"
 
 <ElementShop>:
-    size_hint: None, None
-    size: 400, 100
+    width: root.width
+    height: self.parent.parent.height * 0.10
+    size_hint: (0.842, None)
     pos_hint: {"center_x": 0.5, "center_y": 0.5}
-    padding: 5
-    spacing: 5
+    padding: 25
+    spacing: 10
     orientation: 'vertical'
-    on_release:
+    on_release: 
