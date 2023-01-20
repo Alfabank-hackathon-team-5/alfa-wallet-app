@@ -40,7 +40,7 @@ class WalletApp(MDApp):
 
     def build(self):
         self.theme_cls.theme_style = "Dark"
-        self.theme_cls.primary_palette = "BlueGray"
+        self.theme_cls.primary_palette = "Red"
         return Builder.load_file('alfawalletapp.kv')
 
     def add_card(self):

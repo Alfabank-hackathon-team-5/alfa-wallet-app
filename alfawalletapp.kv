@@ -51,6 +51,8 @@ ScreenManagement:
             text: "LOG IN"
             font_size: 12
             pos_hint: {"center_x": 0.5}
+            text_color: "white"
+            md_bg_color: (239/256, 49/256, 36/256, 1.0)
             on_press: app.root.current = "user_page"
 
         Widget:
@@ -71,27 +73,31 @@ ScreenManagement:
 
             FloatLayout:
                 id: screen_1
-                ScrollView:
-
-                    do_scroll_x: False
-                    do_scroll_y: True
-                    MDBoxLayout:
-                        id: card_list
-                        adaptive_height: True
-                        orientation: 'vertical'
-                        padding: [0, 15]
-                        spacing: 20
-                        
-                        MDTextField:
-                            id: search
-                            mode: "round"
-                            hint_text: "поиск..."
-                            icon_right: "magnify"
-                            size_hint_x: None
-                            width: 400
-                            font_size: 18
-                            pos_hint: {"center_x": 0.5}
-                        ElementCard:
+                MDBoxLayout:
+                    id: card_list
+                    orientation: 'vertical'
+                    padding: [0, 15]
+                    spacing: 20
+                    disabled: False
+                    MDTextField:
+                        id: search
+                        mode: "round"
+                        hint_text: "поиск..."
+                        icon_right: "magnify"
+                        size_hint_x: None
+                        width: 400
+                        font_size: 18
+                        pos_hint: {"center_x": 0.5}
+                    ScrollView:
+                        do_scroll_x: False
+                        do_scroll_y: True
+                        MDBoxLayout:
+                            adaptive_height: True
+                            orientation: 'vertical'
+                            padding: [0, 15]
+                            spacing: 20
+                            
+                            ElementCard:
 
 
         MDBottomNavigationItem:
@@ -100,6 +106,41 @@ ScreenManagement:
             text:
             icon: 'plus-circle-outline'
             disabled: False
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: [0, 15]
+                spacing: 15
+                MDTextField:
+                    id: search
+                    mode: "round"
+                    hint_text: "поиск..."
+                    icon_right: "magnify"
+                    size_hint_x: None
+                    width: 400
+                    font_size: 18
+                    pos_hint: {"center_x": 0.5}
+
+                MDRoundFlatButton:
+                    text: "Добавить карту магазина"
+                    size_hint_x: None
+                    width: 400
+                    font_size: 15
+                    pos_hint: {"center_x": 0.5}
+                    on_press: app.root.current = "user_page"
+
+                ScrollView:
+
+                    do_scroll_x: False
+                    do_scroll_y: True
+                    MDBoxLayout:
+                        adaptive_height: True
+                        orientation: 'vertical'
+                        padding: [0, 15]
+                        spacing: 20
+                        disabled: False
+                        
+                        ElementCard:
+
 
         MDBottomNavigationItem:
             id: navigation_bottom_3
@@ -107,6 +148,17 @@ ScreenManagement:
             text:
             icon: 'account-settings-outline'
             disabled: False
+
+            MDCard:
+                size_hint: None, None
+                size: 300, 400
+                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                elevation: 10
+                padding: 25
+                spacing: 25
+                orientation: 'vertical'
+
+
 
 <ElementCard>:
     #md_bg_color:69/255,55/255,86/255,1
@@ -128,4 +180,4 @@ ScreenManagement:
     spacing: 25
     orientation: 'vertical'
     on_release: self.hide_qr()
-    
+
