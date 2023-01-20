@@ -98,6 +98,8 @@ ScreenManagement:
                             spacing: 20
                             
                             ElementCard:
+                            ElementCard:
+                            ElementCard:
 
 
         MDBottomNavigationItem:
@@ -136,10 +138,12 @@ ScreenManagement:
                         adaptive_height: True
                         orientation: 'vertical'
                         padding: [0, 15]
-                        spacing: 20
+                        spacing: 5
                         disabled: False
+                        ElementShop:
+                        ElementShop:
+                        ElementShop:
                         
-                        ElementCard:
 
 
         MDBottomNavigationItem:
@@ -157,6 +161,10 @@ ScreenManagement:
                 padding: 25
                 spacing: 25
                 orientation: 'vertical'
+                MDCard:
+                    size_hint: None, None
+                    size: 150, 100
+                    pos_hint: {"center_x": 0.5, "top": 1}
 
 
 
@@ -182,3 +190,11 @@ ScreenManagement:
     orientation: 'vertical'
     on_release: self.hide_qr()
 
+<ElementShop>:
+    size_hint: None, None
+    size: 400, 100
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    padding: 5
+    spacing: 5
+    orientation: 'vertical'
+    on_release:

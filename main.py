@@ -27,6 +27,9 @@ class QrPage(MDCard):
         background.opacity = 1
         
 
+class ElementShop(MDCard):
+    pass
+
 class LoginPage(Screen):
     pass
 
