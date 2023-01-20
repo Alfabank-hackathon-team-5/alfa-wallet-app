@@ -9,55 +9,65 @@ ScreenManagement:
 
 <LoginPage>:
     name: "login_page"
+
     MDCard:
-        size_hint: None, None
-        size: 300, 400
+        size_hint: (0.6, 0.7)
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
-        elevation: 10
-        padding: 25
-        spacing: 25
+        padding_left: self.width * 0.07
+        padding_right: self.width * 0.07
+        padding_top: self.height * 0.03
+        padding_bottom: self.height * 0.03
         orientation: 'vertical'
+        MDFloatLayout:
+            size: self.parent.size
+            Image:
+                radius: 24
+                box_color: 1, 1, 1, .2
+                source: "images/login_page_image.jpg"
+                pos_hint: {"center_x": 0.5, "top":1}
+                width: root.width * 0.7
+                height: self.parent.height * 0.30
+                size_hint: (0.842, None)
+            MDBoxLayout:
+                size: self.parent.parent.size
+                orientation: 'vertical'
+                pos_hint: {"center_x": 0.5, "center_y": 0.75}
+                padding_left: self.width * 0.07
+                padding_right: self.width * 0.07
+                padding_top: self.height * 0.03
+                padding_bottom: self.height * 0.03
+                spacing: self.height * 0.03
+                MDTextField:
+                    id: user
+                    mode: "round"
+                    hint_text: "username"
+                    icon_right: "account"
+                    width: self.parent.width * 0.6
+                    size_hint_x: None
+                    font_size: 18
+                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
 
-        MDSmartTile:
-            radius: 24
-            box_radius: [0, 0, 24, 24]
-            box_color: 1, 1, 1, .2
-            source: "images/login_page_image.jpg"
-            pos_hint: {"center_x": .5, "center_y": .5}
-            size_hint: None, None
+                MDTextField:
+                    id: password
+                    mode: "round"
+                    hint_text: "password"
+                    icon_right: "eye-off"
+                    width: self.parent.width * 0.6
+                    size_hint_x: None
+                    font_size: 18
+                    pos_hint: {"center_x": 0.5}
+                    password: True
 
-        MDTextField:
-            id: user
-            mode: "round"
-            hint_text: "username"
-            icon_right: "account"
-            size_hint_x: None
-            width: 200
-            font_size: 18
-            pos_hint: {"center_x": 0.5}
+                MDRoundFlatButton:
+                    text: "Войти"
+                    font_size: 12
+                    width: self.parent.width * 0.6
+                    pos_hint: {"center_x": 0.5}
+                    text_color: "white"
+                    md_bg_color: (239/256, 49/256, 36/256, 1.0)
+                    on_press: app.root.current = "user_page"
 
-        MDTextField:
-            id: password
-            mode: "round"
-            hint_text: "password"
-            icon_right: "eye-off"
-            size_hint_x: None
-            width: 200
-            font_size: 18
-            pos_hint: {"center_x": 0.5}
-            password: True
 
-        MDRoundFlatButton:
-            text: "LOG IN"
-            font_size: 12
-            pos_hint: {"center_x": 0.5}
-            text_color: "white"
-            md_bg_color: (239/256, 49/256, 36/256, 1.0)
-            on_press: app.root.current = "user_page"
-
-        Widget:
-            size_hint_y: None
-            height: 10
 
 <UserPage>:
     name: "user_page"
@@ -84,8 +94,8 @@ ScreenManagement:
                         mode: "round"
                         hint_text: "поиск..."
                         icon_right: "magnify"
-                        size_hint_x: None
-                        width: 400
+                        size_hint_x: 0.7
+                        width: root.width
                         font_size: 18
                         pos_hint: {"center_x": 0.5}
                     ScrollView:
@@ -152,7 +162,6 @@ ScreenManagement:
             text:
             icon: 'account-settings-outline'
             disabled: False
-
             MDCard:
                 size_hint: None, None
                 size: 300, 400
@@ -170,8 +179,9 @@ ScreenManagement:
 
 <ElementCard>:
     #md_bg_color:69/255,55/255,86/255,1
-    size_hint: None, None
-    size: 288, 178
+    width: root.width
+    height: self.parent.parent.height * 0.30
+    size_hint: (0.842, None)
     pos_hint: {"center_x": 0.5, "center_y": 0.5}
     padding: 25
     spacing: 25
@@ -182,13 +192,36 @@ ScreenManagement:
     #md_bg_color:69/255,55/255,86/255,1
     background_color: (1,0,0,.5)
     opacity: 100
-    size_hint: None, None
-    size: 200, 400
+    width: root.width
+    height: root.height
+    size_hint: (0.7, 0.9)
     pos_hint: {"center_x": 0.5, "center_y": 0.5}
-    padding: 25
+    padding: 10
     spacing: 25
     orientation: 'vertical'
     on_release: self.hide_qr()
+    MDLabel:
+        text: "Название магазина"
+        width: root.width * 0.5
+        height: root.height * 0.03
+        pos_hint: {"center_x": 0.5, "center_y": 0.3}
+    MDCard:
+    MDGridLayout:
+        padding: 10
+        cols: 2 
+        rows: 3
+        MDLabel:
+            text: "1"
+        MDLabel:
+            text: "2"
+        MDLabel:
+            text: "3"
+        MDLabel:
+            text: "4"
+        MDLabel:
+            text: "5"
+        MDLabel:
+            text: "6"
 
 <ElementShop>:
     size_hint: None, None

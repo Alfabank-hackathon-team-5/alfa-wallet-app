@@ -4,6 +4,7 @@ from kivymd.app import MDApp
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang.builder import Builder
 from kivymd.uix.card import MDCard
+from kivy.core.window import Window
 
 class ElementCard(MDCard):
     def show_qr(self):
