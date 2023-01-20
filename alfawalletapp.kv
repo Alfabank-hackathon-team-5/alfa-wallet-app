@@ -1,7 +1,11 @@
 #:kivy 2.0.0
+# Критически важно, чтобы название kv файла не совпадало с walletapp
 ScreenManagement:
+
     LoginPage:
+        id: login_page
     UserPage:
+        id: user_page
 
 <LoginPage>:
     name: "login_page"
@@ -55,50 +59,56 @@ ScreenManagement:
 
 <UserPage>:
     name: "user_page"
-
+    opacity: 1
     MDBottomNavigation:
-
+        
         MDBottomNavigationItem:
+            id: navigation_bottom_1
             name: "screen 1"
             text:
             icon: 'card-multiple-outline'
+            disabled: False
 
-            ScrollView:
+            FloatLayout:
+                id: screen_1
+                ScrollView:
 
-                do_scroll_x: False
-                do_scroll_y: True
-                MDBoxLayout:
-                    adaptive_height: True
-                    orientation: 'vertical'
-                    padding: [0, 15]
-                    spacing: 20
-                    
-                    MDTextField:
-                        id: user
-                        mode: "round"
-                        hint_text: "поиск..."
-                        icon_right: "magnify"
-                        size_hint_x: None
-                        width: 400
-                        font_size: 18
-                        pos_hint: {"center_x": 0.5}
-                    ElementCard:
-                    ElementCard:
-                    ElementCard:
+                    do_scroll_x: False
+                    do_scroll_y: True
+                    MDBoxLayout:
+                        id: card_list
+                        adaptive_height: True
+                        orientation: 'vertical'
+                        padding: [0, 15]
+                        spacing: 20
+                        
+                        MDTextField:
+                            id: search
+                            mode: "round"
+                            hint_text: "поиск..."
+                            icon_right: "magnify"
+                            size_hint_x: None
+                            width: 400
+                            font_size: 18
+                            pos_hint: {"center_x": 0.5}
+                        ElementCard:
 
 
         MDBottomNavigationItem:
+            id: navigation_bottom_2
             name: "screen 2"
             text:
             icon: 'plus-circle-outline'
+            disabled: False
 
         MDBottomNavigationItem:
+            id: navigation_bottom_3
             name: "screen 3"
             text:
             icon: 'account-settings-outline'
+            disabled: False
 
-
-<ElementCard@MDCard>:
+<ElementCard>:
     #md_bg_color:69/255,55/255,86/255,1
     size_hint: None, None
     size: 288, 178
@@ -106,6 +116,16 @@ ScreenManagement:
     padding: 25
     spacing: 25
     orientation: 'vertical'
-    on_release: app.root.current = "login_page"
+    on_release: self.show_qr()
 
-
+<QrPage>:
+    #md_bg_color:69/255,55/255,86/255,1
+    background_color: (1,0,0,.5)
+    size_hint: None, None
+    size: 200, 400
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    padding: 25
+    spacing: 25
+    orientation: 'vertical'
+    on_release: self.hide_qr()
+    
