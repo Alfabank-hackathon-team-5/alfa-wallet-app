@@ -391,52 +391,86 @@ ScreenManagement:
     padding: 10
     spacing: 25
     orientation: 'vertical'
-    on_release: self.hide_SettingsPage()
-    MDBoxLayout:
-        orientation: 'vertical'
+    MDFloatLayout:
+        opacity: 1
         MDCard:
-            radius: 10
+            radius: 23
             md_bg_color:239/255,49/255,36/255,1
-            size_hint: (0.8272,0.1596)
-            pos_hint: {"center_x": 0.5, "top": 0.97883}
-            MDBoxLayout:
+            size_hint: (0.8272,0.0525)                  
+            pos_hint: {"center_x": 0.5, "top": 0.9575}
+            MDFloatLayout:                                              
                 size: self.parent.size
-                orientation: 'vertical'
                 MDLabel:
-                    text: "Добавить новую карту []"
+                    text: "Настройки"
                     padding: [20,0]
                     font_size: 18
                     pos_hint: {"center_x": 0.5, "top": 1}
-                    halign: "right"
+                    halign: "center"
                     theme_text_color: "Custom"
-                    text_color: "000000"
+                    text_color: "FFFFFF"   
+        MDCard:
+            on_release: self.parent.parent.hide_SettingsPage()
+            radius: 25
+            md_bg_color:80/255,87/255,89/255,1
+            size_hint: 0.842, 0.7675
+            pos_hint: {"center_x": 0.5, "top": 0.88375}
+            padding: 5
+            spacing: 0
+            orientation: 'vertical'
+            MDFloatLayout:  
+                radius: 25
+                md_bg_color:255/255,255/255,255/255,1
+                size: self.parent.size
+
                 MDCard:
-                    on_release:
                     radius: 23
+                    padding: 5
                     md_bg_color:239/255,49/255,36/255,1
-                    size_hint: (0.8272,0.1091)                  
-                    pos_hint: {"center_x": 0.5, "top": 0.5863}
-                    MDFloatLayout:                                              
+                    size_hint: (0.8272,0.1743)
+                    pos_hint: {"center_x": 0.5, "top": 0.9544}
+                    MDFloatLayout:
+                        radius: 23
                         size: self.parent.size
+                        md_bg_color:255/255,255/255,255/255,1
                         MDLabel:
-                            text: "Настройки"
+                            text: "Сортировка"
                             padding: [20,0]
                             font_size: 18
                             pos_hint: {"center_x": 0.5, "top": 1}
                             halign: "left"
                             theme_text_color: "Custom"
-                            text_color: "000000"
-    MDBoxLayout:
-        orientation: 'vertical'
-        Label:
-            text: '3123'
-            halign: "left"
-        MDTextField:
-            mode: "round"
-        Label:
-            text: '3123'
-            halign: "left"
-            pos_hint: {"x": 0}
-        MDTextField:
-            mode: "round"
-    
+                            text_color: "000000"   
+                MDCard:
+                    on_release: app.show_SettingsPage()
+                    radius: 23
+                    padding: 5
+                    md_bg_color:239/255,49/255,36/255,1
+                    size_hint: (0.8272,0.272)                  
+                    pos_hint: {"center_x": 0.5, "top": 0.7476}
+                    MDFloatLayout:                                              
+                        size: self.parent.size
+                        radius: 23
+                        md_bg_color:255/255,255/255,255/255,1
+                        MDLabel:
+                            text: "Находить в магазины в пределах:"
+                            padding: [20,0]
+                            font_size: 18
+                            pos_hint: {"center_x": 0.5, "top": 1.25}
+                            halign: "left"
+                            theme_text_color: "Custom"
+                            text_color: "000000"   
+                MDCard:
+                    radius: 23
+                    md_bg_color:239/255,49/255,36/255,1
+                    size_hint: (0.8272,0.17427)                  
+                    pos_hint: {"center_x": 0.5, "top": 0.20847}
+                    MDFloatLayout:                                              
+                        size: self.parent.size
+                        MDLabel:
+                            text: "Тёмная тема"
+                            padding: [20,0]
+                            font_size: 20
+                            pos_hint: {"center_x": 0.5, "top": 1}
+                            halign: "left"
+                            theme_text_color: "Custom"
+                            text_color: "FFFFFF"
