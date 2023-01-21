@@ -39,6 +39,16 @@ class ShopAddPage(MDCard):
         background = app.root.ids.user_page
         background.opacity = 1
 
+class SettingsPage(MDCard):
+    def hide_SettingsPage(self):
+        app = MDApp.get_running_app()
+        result_widget = app.root.ids.user_page.ids.screen_3
+        app.root.ids.user_page.ids.settings_screen.disabled = False
+        app.disable_navigation(1, 2, False)
+        result_widget.remove_widget(self)
+        background = app.root.ids.user_page
+        background.opacity = 1
+
 class ElementShop(MDCard):
     def show_card_adding(self):
         app = MDApp.get_running_app()
@@ -101,6 +111,15 @@ class WalletApp(MDApp):
         else:
             app.root.ids.user_page.ids.card_list.disabled = False
 
+    def show_SettingsPage(self):
+        app = MDApp.get_running_app()
+        result_widget = app.root.ids.user_page.ids.screen_3
+        background = app.root.ids.user_page
+        app.root.ids.user_page.ids.settings_screen.disabled = True
+        app.disable_navigation(1, 2, True)
+        background.opacity = 0.1
+        settings_page = SettingsPage()
+        result_widget.add_widget(settings_page)
 
 if __name__ == "__main__":
     WalletApp().run()
