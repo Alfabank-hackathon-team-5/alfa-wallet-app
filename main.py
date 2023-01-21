@@ -28,10 +28,27 @@ class QrPage(MDCard):
         result_widget.remove_widget(self)
         background = app.root.ids.user_page
         background.opacity = 1
-        
+
+class ShopAddPage(MDCard):
+    def hide_ShopAddPage(self):
+        app = MDApp.get_running_app()
+        result_widget = app.root.ids.user_page.ids.screen_2
+        app.root.ids.user_page.ids.shop_screen.disabled = False
+        app.disable_navigation(1, 3, False)
+        result_widget.remove_widget(self)
+        background = app.root.ids.user_page
+        background.opacity = 1
 
 class ElementShop(MDCard):
-    pass
+    def show_card_adding(self):
+        app = MDApp.get_running_app()
+        result_widget = app.root.ids.user_page.ids.screen_2
+        background = app.root.ids.user_page
+        app.root.ids.user_page.ids.shop_screen.disabled = True
+        app.disable_navigation(1, 3, True)
+        background.opacity = 0.1
+        qr_page = ShopAddPage()
+        result_widget.add_widget(qr_page)
 
 class LoginPage(Screen):
     pass

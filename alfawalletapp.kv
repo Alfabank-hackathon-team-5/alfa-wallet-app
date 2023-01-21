@@ -118,42 +118,53 @@ ScreenManagement:
             text:
             icon: 'plus-circle-outline'
             disabled: False
-            MDBoxLayout:
-                orientation: 'vertical'
-                padding: [0, 15]
-                spacing: 15
-                MDTextField:
-                    id: search
-                    mode: "round"
-                    hint_text: "поиск..."
-                    icon_right: "magnify"
-                    size_hint_x: None
-                    width: 400
-                    font_size: 18
-                    pos_hint: {"center_x": 0.5}
+            MDFloatLayout:
+                id: screen_2
+                opacity: 1
+                MDBoxLayout:
+                    id: shop_screen
+                    orientation: 'vertical'
+                    spacing: 15
+                    padding: [15, 15, 15, 0]
+                    MDTextField:
+                        id: search
+                        mode: "round"
+                        hint_text: "поиск..."
+                        icon_right: "magnify"
+                        size_hint_x: None
+                        size_hint_x: 0.7
+                        width: root.width
+                        font_size: 18
+                        pos_hint: {"center_x": 0.5}
 
-                MDRoundFlatButton:
-                    text: "Добавить карту магазина"
-                    size_hint_x: None
-                    width: 400
-                    font_size: 15
-                    pos_hint: {"center_x": 0.5}
-                    on_press: app.root.current = "user_page"
+                    MDRoundFlatButton:
+                        text: "Добавить карту магазина"
+                        size_hint_x: 0.7
+                        width: root.width
+                        font_size: 15
+                        pos_hint: {"center_x": 0.5}
+                        on_press: app.root.current = "user_page"
 
-                ScrollView:
-
-                    do_scroll_x: False
-                    do_scroll_y: True
                     MDBoxLayout:
-                        adaptive_height: True
                         orientation: 'vertical'
-                        padding: [0, 15]
-                        spacing: 5
                         disabled: False
-                        ElementShop:
-                        ElementShop:
-                        ElementShop:
-                        
+                        MDCard:
+                            md_bg_color: "white"
+                            orientation: 'vertical'
+                            size_hint: (0.8, 1)
+                            pos_hint: {"center_x": 0.5, "top": 1}
+                            ScrollView:
+                                do_scroll_x: False
+                                do_scroll_y: True
+                                MDBoxLayout:
+                                    spacing: root.height * 0.005
+                                    padding: root.height * 0.005
+                                    adaptive_height: True
+                                    orientation: 'vertical'
+
+                                    ElementShop:
+                                    ElementShop:
+                                    ElementShop:
 
 
         MDBottomNavigationItem:
@@ -163,18 +174,83 @@ ScreenManagement:
             icon: 'account-settings-outline'
             disabled: False
             MDCard:
-                size_hint: None, None
-                size: 300, 400
+                size_hint: 0.842, 0.7675
                 pos_hint: {"center_x": 0.5, "center_y": 0.5}
                 elevation: 10
-                padding: 25
-                spacing: 25
+                padding: 0
+                spacing: 0
                 orientation: 'vertical'
-                MDCard:
-                    size_hint: None, None
-                    size: 150, 100
-                    pos_hint: {"center_x": 0.5, "top": 1}
-
+                MDFloatLayout:  
+                    md_bg_color:255/255,255/255,255/255,1                  
+                    size: self.parent.size
+                    MDCard:
+                        radius: 25
+                        md_bg_color:239/255,49/255,36/255,1
+                        size_hint: (0.8272,0.1596)                  
+                        pos_hint: {"center_x": 0.5, "top": 0.97883}
+                        MDFloatLayout:                                              
+                            size: self.parent.size
+                            MDLabel:
+                                text: "Аккаунт"
+                                padding: [20,0]
+                                font_size: 18
+                                pos_hint: {"center_x": 0.5, "top": 1}
+                                halign: "right"
+                                theme_text_color: "Custom"
+                                text_color: "000000"        
+                    MDCard:
+                        radius: 23
+                        md_bg_color:239/255,49/255,36/255,1
+                        size_hint: (0.8272,0.1091)                  
+                        pos_hint: {"center_x": 0.5, "top": 0.7443}
+                        MDFloatLayout:                                              
+                            size: self.parent.size
+                            MDLabel:
+                                text: "Кэшбэк и бонусы"
+                                padding: [20,0]
+                                font_size: 18
+                                pos_hint: {"center_x": 0.5, "top": 1}
+                                halign: "left"
+                                theme_text_color: "Custom"
+                                text_color: "000000"   
+                    MDCard:
+                        radius: 23
+                        md_bg_color:239/255,49/255,36/255,1
+                        size_hint: (0.8272,0.1091)                  
+                        pos_hint: {"center_x": 0.5, "top": 0.5863}
+                        MDFloatLayout:                                              
+                            size: self.parent.size
+                            MDLabel:
+                                text: "Настройки"
+                                padding: [20,0]
+                                font_size: 18
+                                pos_hint: {"center_x": 0.5, "top": 1}
+                                halign: "left"
+                                theme_text_color: "Custom"
+                                text_color: "000000"   
+                    MDCard:
+                        radius: 23
+                        md_bg_color:239/255,49/255,36/255,1
+                        size_hint: (0.8272,0.17427)                  
+                        pos_hint: {"center_x": 0.5, "top": 0.20847}
+                        MDFloatLayout:                                              
+                            size: self.parent.size
+                            MDLabel:
+                                text: "Лицензия и условия"
+                                padding: [20,0]
+                                font_size: 15
+                                pos_hint: {"center_x": 0.5, "top": 1.25}
+                                halign: "left"
+                                theme_text_color: "Custom"
+                                text_color: "000000"   
+                            MDLabel:
+                                text: "Версия"
+                                padding: [20,0]
+                                font_size: 15
+                                pos_hint: {"center_x": 0.5, "top": 0.75}
+                                halign: "left"
+                                theme_text_color: "Custom"
+                                text_color: "000000"
 
 
 <ElementCard>:
@@ -226,9 +302,61 @@ ScreenManagement:
 <ElementShop>:
     width: root.width
     height: self.parent.parent.height * 0.10
-    size_hint: (0.842, None)
+    size_hint: (0.95, None)
     pos_hint: {"center_x": 0.5, "center_y": 0.5}
-    padding: 25
+    padding: [15, 15, 15, 15]
     spacing: 10
     orientation: 'vertical'
-    on_release: 
+    on_release: self.show_card_adding()
+
+<ShopAddPage>:
+    background_color: (1,0,0,.5)
+    opacity: 100
+    width: root.width
+    height: root.height
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    padding: 10
+    spacing: 25
+    orientation: 'vertical'
+    on_release: self.hide_ShopAddPage()
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDCard:
+            radius: 10
+            md_bg_color:239/255,49/255,36/255,1
+            size_hint: (0.8272,0.1596)
+            pos_hint: {"center_x": 0.5, "top": 0.97883}
+            MDBoxLayout:
+                size: self.parent.size
+                MDLabel:
+                    text: "Добавить новую карту []"
+                    padding: [20,0]
+                    font_size: 18
+                    pos_hint: {"center_x": 0.5, "top": 1}
+                    halign: "right"
+                    theme_text_color: "Custom"
+                    text_color: "000000"
+        MDIconButton:
+            text: "Кэшбэк и бонусы"
+            icon_right: "android"
+            text_color: "white"
+            anchor: "right"
+            #radius: 23
+            md_bg_color:239/255,49/255,36/255,1
+            size_hint: (0.8272,0.1091)                  
+            pos_hint: {"center_x": 0.5, "top": 0.7443}
+    MDBoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: '3123'
+            halign: "left"
+        MDTextField:
+            mode: "round"
+        Label:
+            text: '3123'
+            halign: "left"
+            pos_hint: {"x": 0}
+        MDTextField:
+            mode: "round"
+    MDBoxLayout:
+
