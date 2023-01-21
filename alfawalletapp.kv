@@ -512,7 +512,6 @@ ScreenManagement:
     spacing: 10
     on_release: self.show_card_adding()
     Image:
-        radius: 24
         source: "images/shop_5.jpg"
         pos_hint: {"center_x": 0.5, "top":1}
         size: self.size
@@ -636,6 +635,7 @@ ScreenManagement:
                         size: self.parent.size
                         md_bg_color:255/255,255/255,255/255,1
                         MDLabel:
+                            on_release:
                             text: "Сортировка"
                             padding: [20,0]
                             font_size: 18
@@ -644,7 +644,7 @@ ScreenManagement:
                             theme_text_color: "Custom"
                             text_color: "000000"   
                 MDCard:
-                    on_release: app.show_SettingsPage()
+                    on_release:
                     radius: 23
                     padding: 5
                     md_bg_color:239/255,49/255,36/255,1
