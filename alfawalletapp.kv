@@ -510,8 +510,20 @@ ScreenManagement:
     pos_hint: {"center_x": 0.5, "center_y": 0.5}
     padding: [15, 15, 15, 15]
     spacing: 10
-    orientation: 'vertical'
     on_release: self.show_card_adding()
+    Image:
+        radius: 24
+        source: "images/shop_5.jpg"
+        pos_hint: {"center_x": 0.5, "top":1}
+        size: self.size
+    MDLabel:
+        text: 'Название магазина'
+        font_size: 18
+        pos_hint: {"center_x": 0.5, "center_н": 0.5}
+        halign: "left"
+        theme_text_color: "Custom"
+        text_color: "black"
+
 
 <ShopAddPage>:
     background_color: (1,0,0,.5)
