@@ -137,13 +137,7 @@ ScreenManagement:
                         font_size: 18
                         pos_hint: {"center_x": 0.5}
 
-                    MDRoundFlatButton:
-                        text: "Добавить карту магазина"
-                        size_hint_x: 0.7
-                        width: root.width
-                        font_size: 15
-                        pos_hint: {"center_x": 0.5}
-                        on_press: app.root.current = "user_page"
+                    
 
                     MDBoxLayout:
                         orientation: 'vertical'
@@ -284,6 +278,20 @@ ScreenManagement:
     spacing: 25
     orientation: 'vertical'
     on_release: self.show_qr()
+    MDFloatLayout:
+        size: self.parent.size
+        MDLabel:
+            text: "Название магазина"
+            theme_text_color: "Custom"
+            text_color: "red"
+            pos_hint: {"x": 0, "center_y": 0.8}
+        MDLabel:
+            text: "Кешбэк \nРасстояние в метрах"
+            theme_text_color: "Custom"
+            text_color: "red"
+            pos_hint: {'center_x': 0.5, "center_y": 0.3}
+            halign: "right"
+
 
 <QrPage>:
     #md_bg_color:69/255,55/255,86/255,1
@@ -303,6 +311,14 @@ ScreenManagement:
         height: root.height * 0.03
         pos_hint: {"center_x": 0.5, "center_y": 0.3}
     MDCard:
+        Image:
+            radius: 24
+            box_color: 1, 1, 1, .2
+            source: "ean_barcode.svg"
+            pos_hint: {"center_x": 0.5, "top":1}
+            width: root.width * 0.7
+            height: self.parent.height * 0.30
+            size_hint: (0.842, None)
     MDGridLayout:
         padding: 10
         cols: 2 
@@ -357,15 +373,6 @@ ScreenManagement:
                     halign: "right"
                     theme_text_color: "Custom"
                     text_color: "000000"
-        MDIconButton:
-            text: "Кэшбэк и бонусы"
-            icon_right: "android"
-            text_color: "white"
-            anchor: "right"
-            #radius: 23
-            md_bg_color:239/255,49/255,36/255,1
-            size_hint: (0.8272,0.1091)                  
-            pos_hint: {"center_x": 0.5, "top": 0.7443}
     MDBoxLayout:
         orientation: 'vertical'
         Label:
@@ -379,6 +386,14 @@ ScreenManagement:
             pos_hint: {"x": 0}
         MDTextField:
             mode: "round"
+    MDBoxLayout:
+        MDRoundFlatButton:
+            text: "Добавить карту магазина"
+            size_hint_x: 0.7
+            width: root.width
+            font_size: 15
+            pos_hint: {"center_x": 0.5}
+            on_press: app.root.current = "user_page"
     MDBoxLayout:
 
 

@@ -5,6 +5,8 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang.builder import Builder
 from kivymd.uix.card import MDCard
 from kivy.core.window import Window
+import barcode
+# import pyvips
 
 Window.size = (360, 800)
 
@@ -120,6 +122,20 @@ class WalletApp(MDApp):
         background.opacity = 0.1
         settings_page = SettingsPage()
         result_widget.add_widget(settings_page)
+    def qr_creator(self, number_barcode):
+        barcode.PROVIDED_BARCODES
+        ['code128', 'code39', 'ean', 'ean13', 'ean14', 'ean8', 'gs1', 'gs1_128', 'gtin', 'isbn', 'isbn10', 'isbn13', 'issn', 'itf', 'jan', 'pzn', 'upc', 'upca']
+        if len(number_barcode) == 13:
+            EAN = barcode.get_barcode_class('ean13')
+            my_ean = EAN(number_barcode)
+            save_name = my_ean.save('ean_barcode')
+        if len(number_barcode) == 14:
+            EAN = barcode.get_barcode_class('ean14')
+            my_ean = EAN(number_barcode)
+            save_name = my_ean.save('ean_barcode')
+        # image = pyvips.Image.new_from_file("ean_barcode.svg", dpi=300)
+        # image.write_to_file("x.jpg")
+
 
 if __name__ == "__main__":
     WalletApp().run()
