@@ -6,69 +6,134 @@ ScreenManagement:
         id: login_page
     UserPage:
         id: user_page
+    RegistrationPage:
+        id: registration_page
 
 <LoginPage>:
     name: "login_page"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "images/back.jpg"
 
-    MDCard:
+    MDFloatLayout:
         size_hint: (0.6, 0.7)
         pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        size: self.parent.size
         padding_left: self.width * 0.07
         padding_right: self.width * 0.07
         padding_top: self.height * 0.03
         padding_bottom: self.height * 0.03
-        orientation: 'vertical'
-        MDFloatLayout:
-            size: self.parent.size
-            Image:
-                radius: 24
-                box_color: 1, 1, 1, .2
-                source: "images/login_page_image.jpg"
-                pos_hint: {"center_x": 0.5, "top":1}
-                width: root.width * 0.7
-                height: self.parent.height * 0.30
-                size_hint: (0.842, None)
-            MDBoxLayout:
-                size: self.parent.parent.size
-                orientation: 'vertical'
-                pos_hint: {"center_x": 0.5, "center_y": 0.75}
-                padding_left: self.width * 0.07
-                padding_right: self.width * 0.07
-                padding_top: self.height * 0.03
-                padding_bottom: self.height * 0.03
-                spacing: self.height * 0.03
-                MDTextField:
-                    id: user
-                    mode: "round"
-                    hint_text: "username"
-                    icon_right: "account"
-                    width: self.parent.width * 0.6
-                    size_hint_x: None
-                    font_size: 18
-                    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        Image:
+            radius: 24
+            box_color: 1, 1, 1, .2
+            source: "images/login_page_image.jpg"
+            pos_hint: {"center_x": 0.5, "top":1}
+            width: root.width * 0.7
+            height: self.parent.height * 0.30
+            size_hint: (0.842, None)
+        MDBoxLayout:
+            size: self.parent.parent.size
+            orientation: 'vertical'
+            pos_hint: {"center_x": 0.5, "center_y": 0.75}
+            padding_left: self.width * 0.07
+            padding_right: self.width * 0.07
+            padding_top: self.height * 0.03
+            padding_bottom: self.height * 0.03
+            spacing: self.height * 0.03
 
-                MDTextField:
-                    id: password
-                    mode: "round"
-                    hint_text: "password"
-                    icon_right: "eye-off"
-                    width: self.parent.width * 0.6
-                    size_hint_x: None
-                    font_size: 18
-                    pos_hint: {"center_x": 0.5}
-                    password: True
+            MDRoundFlatButton:
+                text: "Войти"
+                font_size: 18
+                # width: self.width * 0.4
+                pos_hint: {"center_x": 0.5}
+                text_color: "white"
+                md_bg_color: (239/256, 49/256, 36/256, 1.0)
+                on_press: app.root.current = "user_page"
 
-                MDRoundFlatButton:
-                    text: "Войти"
-                    font_size: 18
-                    # width: self.width * 0.4
-                    pos_hint: {"center_x": 0.5}
-                    text_color: "white"
-                    md_bg_color: (239/256, 49/256, 36/256, 1.0)
-                    on_press: app.root.current = "user_page"
+            MDRoundFlatButton:
+                text: "Зарегистрироваться"
+                font_size: 18
+                # width: self.width * 0.4
+                pos_hint: {"center_x": 0.5}
+                text_color: "white"
+                md_bg_color: (239/256, 49/256, 36/256, 1.0)
+                on_press: app.root.current = "registration_page"
 
+<RegistrationPage>:
+    name: "registration_page"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "images/back.jpg"
 
+    MDFloatLayout:
+        size_hint: (0.6, 0.7)
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        size: self.parent.size
+        padding_left: self.width * 0.07
+        padding_right: self.width * 0.07
+        padding_top: self.height * 0.03
+        padding_bottom: self.height * 0.03
+        Image:
+            radius: 24
+            box_color: 1, 1, 1, .2
+            source: "images/login_page_image.jpg"
+            pos_hint: {"center_x": 0.5, "top":1}
+            width: root.width * 0.7
+            height: self.parent.height * 0.30
+            size_hint: (0.842, None)
+        MDBoxLayout:
+            size: self.parent.parent.size
+            orientation: 'vertical'
+            pos_hint: {"center_x": 0.5, "center_y": 0.75}
+            padding_left: self.width * 0.07
+            padding_right: self.width * 0.07
+            padding_top: self.height * 0.03
+            padding_bottom: self.height * 0.03
+            spacing: self.height * 0.03
 
+            MDTextField:
+                mode: "round"
+                md_bg_color: "white"
+                hint_text: "Введите почту"
+                icon_right: "eye-off"
+                width: self.parent.width * 0.85
+                size_hint_x: None
+                font_size: 18
+                pos_hint: {"center_x": 0.5}
+                password: True
+            MDTextField:
+                mode: "round"
+                md_bg_color: "white"
+                hint_text: "Введите пароль"
+                icon_right: "eye-off"
+                width: self.parent.width * 0.85
+                size_hint_x: None
+                font_size: 18
+                pos_hint: {"center_x": 0.5}
+                password: True
+            MDTextField:
+                mode: "round"
+                md_bg_color: "white"
+                hint_text: "Повторите пароль"
+                icon_right: "eye-off"
+                width: self.parent.width * 0.85
+                size_hint_x: None
+                font_size: 18
+                pos_hint: {"center_x": 0.5}
+                password: True
+
+            MDRoundFlatButton:
+                text: "Зарегистрироваться"
+                font_size: 18
+                # width: self.width * 0.4
+                pos_hint: {"center_x": 0.5}
+                text_color: "white"
+                md_bg_color: (239/256, 49/256, 36/256, 1.0)
+                on_press: app.root.current = "user_page"
 <UserPage>:
     name: "user_page"
     opacity: 1
@@ -171,11 +236,15 @@ ScreenManagement:
                 opacity: 1
                 MDCard:
                     radius: 23
-                    md_bg_color:80/255,87/255,89/255,1
-                    size_hint: (0.8272,0.0525)                  
+                    md_bg_color: "red"
+                    size_hint: (0.8272,0.0525)
                     pos_hint: {"center_x": 0.5, "top": 0.9575}
-                    MDFloatLayout:                                              
+                    MDFloatLayout:
+                        md_bg_color:255/255,255/255,255/255,1
+                        radius: 23
                         size: self.parent.size
+                        size_hint: (0.85,0.85)
+                        pos_hint: {"center_x": 0.5, "center_y": 0.5}
                         MDLabel:
                             text: "Меню"
                             padding: [20,0]
@@ -183,7 +252,7 @@ ScreenManagement:
                             pos_hint: {"center_x": 0.5, "top": 1}
                             halign: "center"
                             theme_text_color: "Custom"
-                            text_color: "FFFFFF"   
+                            text_color: "black" 
                 MDCard:
                     id: settings_screen
                     radius: 25

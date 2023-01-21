@@ -64,7 +64,8 @@ class ElementShop(MDCard):
 
 class LoginPage(Screen):
     pass
-
+class RegistrationPage(Screen):
+    pass
 class UserPage(Screen):
     pass
 
@@ -74,7 +75,7 @@ class ScreenManagement(ScreenManager):
 class WalletApp(MDApp):
 
     def build(self):
-        self.theme_cls.theme_style = "Dark"
+        self.theme_cls.theme_style = "Light"
         self.theme_cls.primary_palette = "Red"
         return Builder.load_file('alfawalletapp.kv')
 
