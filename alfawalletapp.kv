@@ -667,13 +667,22 @@ ScreenManagement:
                     md_bg_color:239/255,49/255,36/255,1
                     size_hint: (0.8272,0.17427)                  
                     pos_hint: {"center_x": 0.5, "top": 0.20847}
-                    MDFloatLayout:                                              
+                    MDBoxLayout:                                              
                         size: self.parent.size
-                        MDLabel:
-                            text: "Тёмная тема"
-                            padding: [20,0]
-                            font_size: 20
-                            pos_hint: {"center_x": 0.5, "top": 1}
-                            halign: "left"
-                            theme_text_color: "Custom"
-                            text_color: "FFFFFF"
+                        MDBoxLayout:
+                            MDLabel:
+                                text: "Тёмная тема"
+                                padding: [20,0]
+                                font_size: 18
+                                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                                halign: "left"
+                                theme_text_color: "Custom"
+                                text_color: "FFFFFF"
+                        MDBoxLayout:
+                            size_hint: (0.5, 1)
+                        MDBoxLayout:
+                            size_hint: (0.5, 1)
+                            MDSwitch:
+                                pos_hint: {"center_x": 0.5, "center_y": 0.5}
+                                active: False
+                                

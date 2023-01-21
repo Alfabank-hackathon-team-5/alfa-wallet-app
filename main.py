@@ -5,7 +5,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang.builder import Builder
 from kivymd.uix.card import MDCard
 from kivy.core.window import Window
-import barcode
+# import barcode
 # import pyvips
 
 Window.size = (360, 800)
