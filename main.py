@@ -21,6 +21,17 @@ class ElementCard(MDCard):
         qr_page = QrPage()
         result_widget.add_widget(qr_page)
 
+class ElementNewCard(MDCard):
+    def show_qr(self):
+        app = MDApp.get_running_app()
+        result_widget = app.root.ids.user_page.ids.screen_1
+        background = app.root.ids.user_page
+        app.disable_cards(True)
+        app.disable_navigation(2, 3, True)
+        background.opacity = 0.1
+        qr_page = QrPage()
+        result_widget.add_widget(qr_page)
+
 class QrPage(MDCard):
     def hide_qr(self):
         app = MDApp.get_running_app()
@@ -66,6 +77,8 @@ class LoginPage(Screen):
     pass
 class RegistrationPage(Screen):
     pass
+class AuthorizationPage(Screen):
+    pass
 class UserPage(Screen):
     pass
 
@@ -82,7 +95,7 @@ class WalletApp(MDApp):
     def add_card(self):
         app = MDApp.get_running_app()
         result_widget = app.root.ids.user_page.ids.card_list
-        result_widget.add_widget(ElementCard())
+        result_widget.add_widget(ElementNewCard())
 
     def disable_navigation(self, page1, page2, status):
         app = MDApp.get_running_app()
@@ -123,19 +136,19 @@ class WalletApp(MDApp):
         background.opacity = 0.1
         settings_page = SettingsPage()
         result_widget.add_widget(settings_page)
-    def qr_creator(self, number_barcode):
-        barcode.PROVIDED_BARCODES
-        ['code128', 'code39', 'ean', 'ean13', 'ean14', 'ean8', 'gs1', 'gs1_128', 'gtin', 'isbn', 'isbn10', 'isbn13', 'issn', 'itf', 'jan', 'pzn', 'upc', 'upca']
-        if len(number_barcode) == 13:
-            EAN = barcode.get_barcode_class('ean13')
-            my_ean = EAN(number_barcode)
-            save_name = my_ean.save('ean_barcode')
-        if len(number_barcode) == 14:
-            EAN = barcode.get_barcode_class('ean14')
-            my_ean = EAN(number_barcode)
-            save_name = my_ean.save('ean_barcode')
-        # image = pyvips.Image.new_from_file("ean_barcode.svg", dpi=300)
-        # image.write_to_file("x.jpg")
+    # def qr_creator(self, number_barcode):
+    #     barcode.PROVIDED_BARCODES
+    #     ['code128', 'code39', 'ean', 'ean13', 'ean14', 'ean8', 'gs1', 'gs1_128', 'gtin', 'isbn', 'isbn10', 'isbn13', 'issn', 'itf', 'jan', 'pzn', 'upc', 'upca']
+    #     if len(number_barcode) == 13:
+    #         EAN = barcode.get_barcode_class('ean13')
+    #         my_ean = EAN(number_barcode)
+    #         save_name = my_ean.save('ean_barcode')
+    #     if len(number_barcode) == 14:
+    #         EAN = barcode.get_barcode_class('ean14')
+    #         my_ean = EAN(number_barcode)
+    #         save_name = my_ean.save('ean_barcode')
+    #     image = pyvips.Image.new_from_file("ean_barcode.svg", dpi=300)
+    #     image.write_to_file("x.jpg")
 
 
 if __name__ == "__main__":

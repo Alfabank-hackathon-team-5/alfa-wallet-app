@@ -8,6 +8,8 @@ ScreenManagement:
         id: user_page
     RegistrationPage:
         id: registration_page
+    AuthorizationPage:
+        id: authorization_page
 
 <LoginPage>:
     name: "login_page"
@@ -50,7 +52,7 @@ ScreenManagement:
                 pos_hint: {"center_x": 0.5}
                 text_color: "white"
                 md_bg_color: (239/256, 49/256, 36/256, 1.0)
-                on_press: app.root.current = "user_page"
+                on_press: app.root.current = "authorization_page"
 
             MDRoundFlatButton:
                 text: "Зарегистрироваться"
@@ -60,6 +62,70 @@ ScreenManagement:
                 text_color: "white"
                 md_bg_color: (239/256, 49/256, 36/256, 1.0)
                 on_press: app.root.current = "registration_page"
+
+<AuthorizationPage>:
+    name: "authorization_page"
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "images/back.jpg"
+
+    MDFloatLayout:
+        size_hint: (0.6, 0.7)
+        pos_hint: {"center_x": 0.5, "center_y": 0.5}
+        size: self.parent.size
+        padding_left: self.width * 0.07
+        padding_right: self.width * 0.07
+        padding_top: self.height * 0.03
+        padding_bottom: self.height * 0.03
+        Image:
+            radius: 24
+            box_color: 1, 1, 1, .2
+            source: "images/login_page_image.jpg"
+            pos_hint: {"center_x": 0.5, "top":1}
+            width: root.width * 0.7
+            height: self.parent.height * 0.30
+            size_hint: (0.842, None)
+        MDBoxLayout:
+            size: self.parent.parent.size
+            orientation: 'vertical'
+            pos_hint: {"center_x": 0.5, "center_y": 0.75}
+            padding_left: self.width * 0.07
+            padding_right: self.width * 0.07
+            padding_top: self.height * 0.03
+            padding_bottom: self.height * 0.03
+            spacing: self.height * 0.03
+
+            MDTextField:
+                mode: "round"
+                md_bg_color: "white"
+                hint_text: "Логин"
+                icon_right: "eye-off"
+                width: self.parent.width * 0.85
+                size_hint_x: None
+                font_size: 18
+                pos_hint: {"center_x": 0.5}
+
+            MDTextField:
+                mode: "round"
+                md_bg_color: "white"
+                hint_text: "Пароль"
+                icon_right: "eye-off"
+                width: self.parent.width * 0.85
+                size_hint_x: None
+                font_size: 18
+                pos_hint: {"center_x": 0.5}
+                password: True
+
+            MDRoundFlatButton:
+                text: "Вход"
+                font_size: 18
+                # width: self.width * 0.4
+                pos_hint: {"center_x": 0.5}
+                text_color: "white"
+                md_bg_color: (239/256, 49/256, 36/256, 1.0)
+                on_press: app.root.current = "user_page"
 
 <RegistrationPage>:
     name: "registration_page"
@@ -104,7 +170,7 @@ ScreenManagement:
                 size_hint_x: None
                 font_size: 18
                 pos_hint: {"center_x": 0.5}
-                password: True
+
             MDTextField:
                 mode: "round"
                 md_bg_color: "white"
@@ -149,7 +215,6 @@ ScreenManagement:
             FloatLayout:
                 id: screen_1
                 MDBoxLayout:
-                    id: card_list
                     orientation: 'vertical'
                     padding: [0, 15]
                     spacing: 20
@@ -167,6 +232,7 @@ ScreenManagement:
                         do_scroll_x: False
                         do_scroll_y: True
                         MDBoxLayout:
+                            id: card_list
                             adaptive_height: True
                             orientation: 'vertical'
                             padding: [0, 15]
@@ -257,7 +323,7 @@ ScreenManagement:
                     id: settings_screen
                     radius: 25
                     md_bg_color:80/255,87/255,89/255,1
-                    size_hint: 0.842, 0.7675
+                    size_hint: 0.842, 0.9
                     pos_hint: {"center_x": 0.5, "top": 0.89125}
                     padding: 5
                     spacing: 0
@@ -340,7 +406,8 @@ ScreenManagement:
 <ElementCard>:
     #md_bg_color:69/255,55/255,86/255,1
     width: root.width
-    height: self.parent.parent.height * 0.30
+    md_bg_color: (217/256, 217/256, 214/256, 1.0)
+    height: root.parent.parent.height * 0.30
     size_hint: (0.842, None)
     pos_hint: {"center_x": 0.5, "center_y": 0.5}
     padding: 25
@@ -361,6 +428,30 @@ ScreenManagement:
             pos_hint: {'center_x': 0.5, "center_y": 0.3}
             halign: "right"
 
+<ElementNewCard>:
+    #md_bg_color:69/255,55/255,86/255,1
+    width: root.width
+    md_bg_color: (217/256, 217/256, 214/256, 1.0)
+    height: app.root.height * 0.24
+    size_hint: (0.842, None)
+    pos_hint: {"center_x": 0.5, "center_y": 0.5}
+    padding: 25
+    spacing: 25
+    orientation: 'vertical'
+    on_release: self.show_qr()
+    MDFloatLayout:
+        size: self.parent.size
+        MDLabel:
+            text: "Название магазина"
+            theme_text_color: "Custom"
+            text_color: "red"
+            pos_hint: {"x": 0, "center_y": 0.8}
+        MDLabel:
+            text: "Кешбэк \nРасстояние в метрах"
+            theme_text_color: "Custom"
+            text_color: "red"
+            pos_hint: {'center_x': 0.5, "center_y": 0.3}
+            halign: "right"
 
 <QrPage>:
     #md_bg_color:69/255,55/255,86/255,1
@@ -368,45 +459,52 @@ ScreenManagement:
     opacity: 100
     width: root.width
     height: root.height
-    size_hint: (0.7, 0.9)
     pos_hint: {"center_x": 0.5, "center_y": 0.5}
     padding: 10
     spacing: 25
     orientation: 'vertical'
     on_release: self.hide_qr()
-    MDLabel:
-        text: "Название магазина"
-        width: root.width * 0.5
-        height: root.height * 0.03
-        pos_hint: {"center_x": 0.5, "center_y": 0.3}
-    MDCard:
-        Image:
-            radius: 24
-            box_color: 1, 1, 1, .2
-            source: "ean_barcode.svg"
-            pos_hint: {"center_x": 0.5, "top":1}
-            width: root.width * 0.7
-            height: self.parent.height * 0.30
-            size_hint: (0.842, None)
+    MDBoxLayout:
+        orientation: 'vertical'
+        MDLabel:
+            text: "Название магазина"
+            # theme_text_color: "Custom"
+            # text_color: "red"
+            pos_hint: {"x": 0, "center_y": 0.8}
+
+        MDCard:
+            radius: 10
+            md_bg_color:239/255,49/255,36/255,1
+            pos_hint: {"center_x": 0.5, "top": 0.97883}
+            MDLabel:
+                text: "*Здесь QR*"
+                padding: [20,0]
+                font_size: 18
+                pos_hint: {"center_x": 0.5, "top": 1}
+                halign: "right"
+                theme_text_color: "Custom"
+                text_color: "000000"
+    
     MDGridLayout:
         padding: 10
         cols: 2 
         rows: 3
         MDLabel:
-            text: "1"
+            text: "Расстояние"
         MDLabel:
-            text: "2"
+            text: "... метров"
         MDLabel:
-            text: "3"
+            text: "Номер карты"
         MDLabel:
-            text: "4"
+            text: "..."
         MDLabel:
-            text: "5"
+            text: "Статус карты"
         MDLabel:
-            text: "6"
+            text: "..."
 
 <ElementShop>:
     width: root.width
+    md_bg_color: (217/256, 217/256, 214/256, 1.0)
     height: self.parent.parent.height * 0.10
     size_hint: (0.95, None)
     pos_hint: {"center_x": 0.5, "center_y": 0.5}
@@ -444,15 +542,22 @@ ScreenManagement:
                     text_color: "000000"
     MDBoxLayout:
         orientation: 'vertical'
-        Label:
-            text: '3123'
+        MDLabel:
+            text: 'Тип карты'
+            font_size: 18
+            pos_hint: {"center_x": 0.5, "center_н": 0.5}
             halign: "left"
+            theme_text_color: "Custom"
+            text_color: "black"
         MDTextField:
             mode: "round"
-        Label:
-            text: '3123'
+        MDLabel:
+            text: 'Номер карты'
+            font_size: 18
+            pos_hint: {"center_x": 0.5, "center_н": 0.5}
             halign: "left"
-            pos_hint: {"x": 0}
+            theme_text_color: "Custom"
+            text_color: "black"
         MDTextField:
             mode: "round"
     MDBoxLayout:
@@ -462,7 +567,9 @@ ScreenManagement:
             width: root.width
             font_size: 15
             pos_hint: {"center_x": 0.5}
-            on_press: app.root.current = "user_page"
+            on_press: 
+                app.add_card()
+                root.hide_ShopAddPage()
     MDBoxLayout:
 
 
